@@ -8,7 +8,7 @@ INCLUDES=-I$(IDIR_RECON)
 
 LIBS=-lfftw3 -lm -lfct_read
 
-CFLAGS=$(INCLUDES) -g
+CFLAGS=$(INCLUDES) -g $(LOCAL_CFLAGS)
 
 _OBJ=main.o setup.o interp.o rebin_filter.o rebin_filter_cpu.o backproject.o backproject_cpu.o
 OBJ=$(patsubst %,$(ODIR)/%,$(_OBJ));
@@ -16,7 +16,7 @@ OBJ=$(patsubst %,$(ODIR)/%,$(_OBJ));
 all: ../test
 
 ../test: $(OBJ)
-	(cd obj && $(NVCC) -o ../../test *.o $(LIBS))
+	(cd obj && $(NVCC) $(LOCAL_CFLAGS) -o ../../test *.o $(LIBS))
 
 obj/main.o: main.cu $(IDIR_RECON)recon_structs.h $(IDIR_RECON)setup.h $(IDIR_RECON)rebin_filter.h $(IDIR_RECON)backproject.h
 	$(NVCC) $(CFLAGS) -c -o $@ $<
