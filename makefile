@@ -32,6 +32,7 @@ install:
 	cp -v -u -r ${SRC_DIR}LICENSE.md ${INSTALL_PATH}
 
 # Create our execution script
+	mkdir -p ${SCRIPT_PATH}
 	@echo Creating execution script ${SCRIPT_PATH}fct_wfbp...
 	touch ${SCRIPT_PATH}fct_wfbp
 	chmod +x ${SCRIPT_PATH}fct_wfbp
