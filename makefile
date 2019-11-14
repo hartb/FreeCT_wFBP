@@ -10,9 +10,6 @@ rebuild:
 	cp test fct_wfbp
 
 install:
-ifneq ($(USER),root)
-	@echo Please run with sudo
-else
 	@echo Source directory is: ${SRC_DIR}.
 	@echo By default, the FreeCT_wFBP executable and support files
 	@echo are installed in:
@@ -40,7 +37,6 @@ else
 	chmod +x ${SCRIPT_PATH}fct_wfbp
 	@echo "#!/bin/bash" > ${SCRIPT_PATH}fct_wfbp
 	@echo ${INSTALL_PATH}fct_wfbp \"\$$\@\" >> ${SCRIPT_PATH}fct_wfbp
-endif
 
 
 .PHONY: all clean
